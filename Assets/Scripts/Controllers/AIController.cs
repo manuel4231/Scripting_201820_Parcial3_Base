@@ -8,14 +8,16 @@ public class AIController : ActorController
 
     [SerializeField]
     private Root btRootNode;
+    float velocidad = 2;
+    Transform mTrasform, jugador;
+    public NavMeshAgent navAgent;
+    public bool patrullando = true, enRango = false;
 
-    public void MoveAI()
-    {
-        MoveActor();
-    }
 
     protected override void Start()
     {
+        mTrasform = GetComponent<Transform>();
+        jugador = GameObject.Find("AI").GetComponent<Transform>();
         base.Start();
 
         if (btRootNode != null)
@@ -24,6 +26,32 @@ public class AIController : ActorController
         }
 
         AIMoveTest.Instance.onAIMoveIssued += MoveAI;
+    }
+
+    void Update()
+    {
+        MoveAI();
+    }
+
+    public void MoveAI()
+    {
+        Vector3 rangoJugador = mTrasform.position - jugador.position;
+        if (rangoJugador.sqrMagnitude <= 500)
+        {
+            //navAgent.ResetPath();
+            enRango = true;
+            patrullando = false;
+            if (enRango == true)
+            {
+                mTrasform.LookAt(jugador.position);
+                mTrasform.position += mTrasform.forward * Time.deltaTime * velocidad;
+            }
+        }
+        if (rangoJugador.sqrMagnitude >= 500)
+        {
+            enRango = false;
+            patrullando = true;
+        }
     }
 
     protected override void OnDestroy()
@@ -48,4 +76,6 @@ public class AIController : ActorController
 
         return result;
     }
+
+
 }
