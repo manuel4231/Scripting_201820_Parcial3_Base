@@ -6,13 +6,23 @@ public class GameController : MonoBehaviour
 {
     private ActorController[] players;
 
+    [SerializeField]
     private float gameTime = 25F;
 
+    [SerializeField]
+    int numPlayers;
+
     public float CurrentGameTime { get; private set; }
+
+    public GameObject iA;
 
     // Use this for initialization
     private IEnumerator Start()
     {
+        numPlayers = Mathf.Clamp(numPlayers, 2, 5);
+
+        PlayerCreate();
+
         CurrentGameTime = gameTime;
 
         // Sets the first random tagged player
@@ -30,6 +40,14 @@ public class GameController : MonoBehaviour
         if (CurrentGameTime <= 0F)
         {
             //TODO: Send GameOver event.
+
+            foreach (ActorController actorController in players)
+            {
+                actorController.Die();
+      
+            }
+            CurrentGameTime = 0;
+            Winner();
         }
     }
 
@@ -43,7 +61,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    [SerializeField]
+/*    [SerializeField]
     private Rigidbody AiPrefab;
 
     [SerializeField]
@@ -95,5 +113,36 @@ public class GameController : MonoBehaviour
         Ais.RemoveAt(Ais.Count - 1);
         Ai.gameObject.SetActive(true);
         return Ai;
+    }*/
+
+    private void PlayerCreate()
+    {
+
+        for (int i = 0; i < numPlayers - 1; i++)
+        {
+            Instantiate(iA, new Vector3(Random.Range(-25, 25), 2, Random.Range(-25, 25)), Quaternion.identity);
+        }
+    }
+
+    void Winner()
+    {
+        int temporal = 100;
+        foreach (ActorController actorController in players)
+        {
+            if (actorController.timesTagged < temporal)
+            {
+                temporal = actorController.timesTagged;
+            }
+
+        }
+
+        foreach (ActorController actorController in players)
+        {
+            if (actorController.timesTagged == temporal)
+            {
+                actorController.gameObject.GetComponent<Renderer>().material.color = new Color(1, 1, 0);
+            }
+
+        }
     }
 }

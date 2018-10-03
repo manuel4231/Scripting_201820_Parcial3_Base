@@ -5,6 +5,6 @@ public class ActorIsTagged : Selector
 {
     protected override bool CheckCondition()
     {
-        return base.CheckCondition();
+        return GetComponent<AIController>().IsTagged;
     }
 }

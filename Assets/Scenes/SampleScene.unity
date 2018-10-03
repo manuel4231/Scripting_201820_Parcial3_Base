@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
   - component: {fileID: 534669907}
-  - component: {fileID: 534669908}
+  - component: {fileID: 534669909}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -393,9 +393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5825a0646370d49bf13b579ca7bc37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AiPrefab: {fileID: 1665701388}
-  size: 4
---- !u!114 &534669908
+  gameTime: 25
+  numPlayers: 3
+  iA: {fileID: 1665701387}
+--- !u!114 &534669909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,11 +404,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d123ef2a50e9c84397371a294753c0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c865701c271a0f4eb303e8e32d4cf95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 1087225553}
-  t: 0
+  timeText: {fileID: 1087225553}
 --- !u!1 &550424805 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: fadddc63520db414bbc9126cbf4743ad,
@@ -739,8 +739,8 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fadddc63520db414bbc9126cbf4743ad, type: 3}
   m_IsPrefabAsset: 0
---- !u!54 &1665701388 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 54169307569091978, guid: a975fb72cc8ad174b94e00ec0c12e37d,
+--- !u!1 &1665701387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1601837545257616, guid: a975fb72cc8ad174b94e00ec0c12e37d,
     type: 2}
   m_PrefabInternal: {fileID: 394727081}
