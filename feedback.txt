@@ -1,0 +1,16 @@
+Feedback
+
+Examen (1.5/5.0)
+ * Todos los AI van al mismo punto. El 'tagged' parece ignorar otros jugadores y va igual que los otros, cuando tengo 3 jugadores. Cuando tengo 5, parece que los AI persiguen al 'tagged'.
+ * Al haber colisión entre el 'tagged' y otro actor, no hay cambio de 'tagged'. Cuando tengo 5 jugadores, sí se nota el cambio de rol.
+ * El GameController permite configurar tiempo y cantidad de jugadores (1.0)
+ * BT (0.5/1.8)
+	* ActorIsTagged OK (0.3)
+	* FleeFromTarget no parece estar haciendo lo indicado (0.2)
+	* FollowTarget, GetNearestTarget, IsTaggedActorNear, StopMovement no implementados
+ 
+
+Bonificación (0.0/0.5)
+Compensación : 1.0
+
+Total: 2.5 /5.0
